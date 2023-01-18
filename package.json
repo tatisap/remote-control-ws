@@ -1,0 +1,38 @@
+{
+  "name": "remote-control-ws",
+  "version": "1.0.0",
+  "description": "RSS assignment",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon",
+    "start:prod": "tsc --project ./tsconfig.build.json && node ./dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tatisap/remote-control-ws.git"
+  },
+  "author": "Tatsiana Sapun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tatisap/remote-control-ws/issues"
+  },
+  "homepage": "https://github.com/tatisap/remote-control-ws#readme",
+  "devDependencies": {
+    "@types/ws": "^8.5.4",
+    "@typescript-eslint/eslint-plugin": "^5.48.2",
+    "@typescript-eslint/parser": "^5.48.2",
+    "eslint": "^8.32.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "jimp": "^0.16.2",
+    "ws": "^8.12.0"
+  }
+}
