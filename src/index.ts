@@ -6,7 +6,7 @@ import { httpServer } from './http_server';
 import WebSocket, { createWebSocketStream, WebSocketServer } from 'ws';
 import { HTTP_PORT, WS_HOST, WS_PORT } from './config';
 import { appRouter } from './app.router';
-import { processClientMessage } from './helpers/process.helper';
+import { processClientMessage, processError } from './helpers/process.helper';
 
 const wss = new WebSocketServer({ port: WS_PORT, host: WS_HOST });
 const { port, host } = wss.options;
@@ -17,11 +17,15 @@ wss.on('connection', (ws: WebSocket.WebSocket): void => {
   const duplex = createWebSocketStream(ws);
 
   duplex.on('data', async (data) => {
-    const [command, payload] = processClientMessage(data.toString());
-    const answer = await appRouter(command, ...payload);
-    duplex._write(answer, 'utf-8', (err) => {
-      if (err) console.error(err);
-    });
+    try {
+      const [command, payload] = processClientMessage(data.toString());
+      const answer = await appRouter(command, ...payload);
+      duplex._write(answer, 'utf-8', (err) => {
+        if (err) console.error(err);
+      });
+    } catch (error: unknown) {
+      processError(error);
+    }
   });
 });
 
