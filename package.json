@@ -4,8 +4,7 @@
   "description": "RSS assignment",
   "main": "index.ts",
   "scripts": {
-    "start:dev": "nodemon",
-    "start:prod": "tsc --project ./tsconfig.build.json && node ./dist/index.js"
+    "start": "nodemon"
   },
   "repository": {
     "type": "git",

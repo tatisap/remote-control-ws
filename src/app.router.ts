@@ -3,7 +3,7 @@ import { DrawingController } from './drawing/drawing.controller';
 import { ImageController } from './image/image.controller';
 import { MouseController } from './mouse/mouse.controller';
 
-export const appRouter = async (command: string, ...args: number[]): Promise<string> => {
+export const appRouter = async (command: string, ...args: number[]): Promise<string | null> => {
   switch (command) {
     case WS_CMD.MOUSE_UP:
       return MouseController.moveUp(...(args as [number]));
@@ -24,7 +24,6 @@ export const appRouter = async (command: string, ...args: number[]): Promise<str
     case WS_CMD.PRNT_SCRN:
       return ImageController.printScreen();
     default:
-      break;
+      return null;
   }
-  return '';
 };

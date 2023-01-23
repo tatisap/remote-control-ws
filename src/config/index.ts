@@ -1,13 +1,7 @@
-const WS_PORT = Number(process.env.WS_PORT);
+const WS_PORT = Number(process.env.WS_PORT) || 8080;
 
-if (isNaN(WS_PORT)) {
-  throw new Error('WS_PORT is not defined. Please, check .env');
-}
+const WS_HOST = process.env.WS_HOST || 'localhost';
 
-const HTTP_PORT = process.env.HTTP_PORT;
+const HTTP_PORT = process.env.HTTP_PORT || 8181;
 
-if (!HTTP_PORT) {
-  throw new Error('HTTP_PORT is not defined. Please, check .env');
-}
-
-export { WS_PORT, HTTP_PORT };
+export { WS_PORT, WS_HOST, HTTP_PORT };
