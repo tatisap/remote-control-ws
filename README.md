@@ -1,4 +1,4 @@
-# CRUD API
+# Remote control
 
 ## Installing
 
