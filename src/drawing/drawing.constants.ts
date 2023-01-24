@@ -1,0 +1,5 @@
+export const CIRCLE = {
+  ROUND_ANGLE: 360,
+  STRAIGHT_ANGLE: 180,
+  STEP_ANGLE: 5,
+};
